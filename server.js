@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app_config = require('./config/app.properties');
-const router = express.Router();
 
 // create express app
 const app = express();
@@ -39,25 +38,21 @@ let myLogger = function (req, res, next) {
 
 //app.use(myLogger)
 
-const { Observable, Subject, ReplaySubject, from, of, range } = require('rxjs');
-
-var ob = new Subject();
-
 // define a simple route
-app.post('/', (req, res) => {  
-    console.log("web app requeted");
-    ob.subscribe(() => {
-        console.log("app authentication done");
-        res.json({ "same": "adsfd" });                
-    })               
-});
+// app.post('/', (req, res) => {  
+//     console.log("web app requeted");
+//     ob.subscribe(() => {
+//         console.log("app authentication done");
+//         res.json({ "same": "adsfd" });                
+//     })               
+// });
 
 // Importing routes
 // app.use(require('./app/send_otp/routes/send_otp.route')(app));
 // app.use(require('./app/digit_req/routes/digit_req.route')(app));
 // app.use(require('./app/app_auth/routes/app_auth.route')(app));
-var sendOtp = require('./app/send_otp/routes/send_otp.route');
-app.use('/otp', sendOtp);
+sendOtp = require('./app/send_otp/routes/send_otp.route');
+app.use('/', sendOtp);
 
 // define a simple route
 app.get('/second', (req, res) => {    
