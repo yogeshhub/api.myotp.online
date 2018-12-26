@@ -51,6 +51,11 @@ app.post('/', (req, res) => {
     })               
 });
 
+// Importing routes
+require('./app/send_otp/routes/send_otp.route')(app);
+require('./app/digit_req/routes/digit_req.route')(app);
+require('./app/app_auth/routes/app_auth.route')(app);
+
 // define a simple route
 app.get('/second', (req, res) => {    
     setTimeout(() => {
@@ -61,11 +66,6 @@ app.get('/second', (req, res) => {
 });
 
 const port = process.env.PORT || app_config.port;
-
-// Importing routes
-require('./app/send_otp/routes/send_otp.route')(app);
-require('./app/digit_req/routes/digit_req.route')(app);
-require('./app/app_auth/routes/app_auth.route')(app);
 
 // listen for requests
 app.listen(port, () => {
