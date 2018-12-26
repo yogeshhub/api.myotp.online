@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app_config = require('./config/app.properties');
-//let pro;
+const router = express.Router();
+
 // create express app
 const app = express();
 
@@ -52,9 +53,11 @@ app.post('/', (req, res) => {
 });
 
 // Importing routes
-require('./app/send_otp/routes/send_otp.route')(app);
-require('./app/digit_req/routes/digit_req.route')(app);
-require('./app/app_auth/routes/app_auth.route')(app);
+// app.use(require('./app/send_otp/routes/send_otp.route')(app));
+// app.use(require('./app/digit_req/routes/digit_req.route')(app));
+// app.use(require('./app/app_auth/routes/app_auth.route')(app));
+
+app.use(require('./app/send_otp/routes/send_otp.route'));
 
 // define a simple route
 app.get('/second', (req, res) => {    
