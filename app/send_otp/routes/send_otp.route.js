@@ -9,7 +9,7 @@ const SendOtpController = require('../controllers/send_otp.controller');
 const express = require('express');
 var router = express.Router();
 
-router.post('/generateDigit', [    
+router.post('/generateDigit', [        
     SendOtpController.insert
 ]);
 

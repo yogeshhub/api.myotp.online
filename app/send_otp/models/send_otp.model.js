@@ -12,6 +12,7 @@ const otpSchema = mongoose.Schema({
 const otpModel = mongoose.model('otps', otpSchema);
 
 generateDigit = (userData) => {
+    console.log("coming in to the model");
     const user = new otpModel(userData);
     user.status = "alive";
     user.tranId = userData.companyId + Math.floor(Math.random() * 90 + 10) + 'T' + userData.tranId;

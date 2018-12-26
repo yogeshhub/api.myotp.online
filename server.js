@@ -56,8 +56,8 @@ app.post('/', (req, res) => {
 // app.use(require('./app/send_otp/routes/send_otp.route')(app));
 // app.use(require('./app/digit_req/routes/digit_req.route')(app));
 // app.use(require('./app/app_auth/routes/app_auth.route')(app));
-
-app.use(require('./app/send_otp/routes/send_otp.route'));
+var sendOtp = require('./app/send_otp/routes/send_otp.route');
+app.use('/otp', sendOtp);
 
 // define a simple route
 app.get('/second', (req, res) => {    
