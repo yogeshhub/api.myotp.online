@@ -66,6 +66,11 @@ app.get('/second', (req, res) => {
 const port = process.env.PORT || app_config.port;
 
 // listen for requests
-app.listen(port, () => {
-    console.log("Server is listening on port " + port);
+// app.listen(port, () => {
+//     console.log("Server is listening on port " + port);
+// });
+
+var httpServer = require('http').createServer(app);
+httpServer.listen(port, function () {
+  console.log('parse-server-example running on port ' + port + '.');
 });
