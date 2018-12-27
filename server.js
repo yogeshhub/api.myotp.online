@@ -48,11 +48,9 @@ let myLogger = function (req, res, next) {
 // });
 
 // Importing routes
-app.use(require('./app/send_otp/routes/send_otp.route')(app));
-app.use(require('./app/digit_req/routes/digit_req.route')(app));
-app.use(require('./app/app_auth/routes/app_auth.route')(app));
-// sendOtp = require('./app/send_otp/routes/send_otp.route');
-// app.use('/', sendOtp);
+require('./app/send_otp/routes/send_otp.route')(app);
+require('./app/digit_req/routes/digit_req.route')(app);
+require('./app/app_auth/routes/app_auth.route')(app);
 
 // define a simple route
 app.get('/second', (req, res) => {    

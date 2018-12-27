@@ -6,7 +6,7 @@ getDigit = (req, res) => {
         .then((user) => {
             let resData = utility.responseBuilder(user);
 
-            if(resData.data) {
+            if(resData.data && user) {
                 resData.data.companyId = user.companyId;
                 resData.data.tranId = user.tranId;
                 resData.data.mobileNumber = user.mobileNumber;
