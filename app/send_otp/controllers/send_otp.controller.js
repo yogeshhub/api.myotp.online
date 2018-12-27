@@ -2,8 +2,7 @@ const sendOtpModel = require('../models/send_otp.model');
 const appAuthCtrl = require('../../app_auth/controllers/app_auth.controller');
 const utility = require('../../common/utility');
 
-exports.insert = (req, res) => {
-    console.log("generate digit got in controller");
+exports.insert = (req, res) => {    
     sendOtpModel.generateDigit(req.body)
         .then((result) => {
             if(result) {
