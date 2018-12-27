@@ -6,17 +6,18 @@ const otpSchema = mongoose.Schema({
     mobileNumber: String,
     companyDigit: String,
     middlewareDigit: String,
-    status: String
+    status: String,
+    userDigit: String
 });
 
 const otpModel = mongoose.model('otps', otpSchema);
 
-generateDigit = (userData) => {
-    console.log("coming in to the model");
+generateDigit = (userData) => {    
     const user = new otpModel(userData);
     user.status = "alive";
     user.tranId = userData.companyId + Math.floor(Math.random() * 90 + 10) + 'T' + userData.tranId;
     user.middlewareDigit =  Math.floor(Math.random() * 90 + 10);
+    user.userDigit = "";
 
     return user.save();
 };
